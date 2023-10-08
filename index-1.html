@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Developer Devendra - 3D carousel</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="jquery-3.7.1.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <style>
+    button {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #fd1853;
+  font-family: "Montserrat", sans-serif;
+  overflow: hidden;
+  border: none;
+}
+
+button:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
+}
+
+button:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+button span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 18px 25px;
+  color: #fffcfd;
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+}
+
+button:hover span {
+  animation: scaleUp 0.3s ease-in-out;
+  color: #fd1853;
+}
+
+button:hover {
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.star-1 {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 25px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+}
+
+.star-2 {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-3 {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all 1s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-4 {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  width: 8px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all .8s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-5 {
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  width: 15px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all .6s cubic-bezier(0, 0.4, 0, 1.01);
+}
+
+.star-6 {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 5px;
+  height: auto;
+  filter: drop-shadow(0 0 0 #fd1853);
+  z-index: -5;
+  transition: all .8s ease;
+}
+
+button .star-1 {
+  position: absolute;
+  /* top: -2%; */
+  left: 0%;
+  width: 40px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+
+button .star-2 {
+  position: absolute;
+  top: 34%;
+  left: 41.5%;
+  width: 30px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+
+button .star-3 {
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  width: 30px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+
+button .star-4 {
+  position: absolute;
+  top: 0%;
+  left: 55%;
+  width: 20px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+
+button .star-5 {
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  width: 40px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+
+button .star-6 {
+  position: absolute;
+  top: 75%;
+  left: 60%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+button .star-7 {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+button .star-8 {
+  position: absolute;
+  top: 35%;
+  left: 86%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+button .star-9 {
+  position: absolute;
+  top: 35%;
+  left: 20%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+button .star-10 {
+  position: absolute;
+  top: 90%;
+  left: 10%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+button .star-11 {
+  position: absolute;
+  top: 90%;
+  left: 90%;
+  width: 50px;
+  height: auto;
+  filter: drop-shadow(0 0 10px #fd1853);
+  z-index: 2;
+}
+.d1{
+  /* position: absolute; */
+  z-index: -1;
+}
+
+
+  </style>
+<body>
+<!-- partial:index.partial.html -->
+<div class="d1">
+<button>
+  
+   <div class="star-1">
+    <svg height="40" width="40" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+
+  </div>
+  <div class="star-2">
+    <svg height="30" width="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-3">
+    <svg height="30" width="30" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-4">
+    <svg height="20" width="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-5">
+    <svg height="40" width="40" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-6">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-7">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-8">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-9">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-10">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+  <div class="star-11">
+    <svg height="50" width="50" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="M427.313,88.686c-47.803-47.803-125.213-47.803-173.016,0l-17.087,17.087l-17.087-17.087
+    c-47.803-47.803-125.213-47.803-173.016,0c-47.803,47.803-47.803,125.213,0,173.016l190.103,190.103
+    c4.88,4.88,11.316,7.322,17.752,7.322c6.435,0,13.871-2.442,18.751-7.322l190.103-190.103
+    C475.116,213.899,475.116,136.489,427.313,88.686z" fill="#fd1853"></path>
+</svg>
+
+  </div>
+ß
+  
+</button>
+</div>
+<div id="drag-container">
+  <div id="spin-container" class="spin-container">
+    <img src="images/2.jpg" alt="">
+    <img src="images/6.jpeg" alt="">
+    <video controls autoplay="autoplay" loop muted src="images/2.mp4" type="video/mp4" >
+    </video>
+    
+    <img src="images/7.jpg" alt="">
+    <img src="images/8.jpg" alt="">
+
+    <video controls autoplay="autoplay" loop muted src="images/4.mp4" type="video/mp4" >
+    </video>
+   
+
+    <img src="images/9.jpg" alt="">
+    <img src="images/10.jpeg" alt="">
+    <img src="images/11.jpg" alt="">
+    
+    <!-- Example image with link -->
+    
+   
+    
+    <video controls autoplay="autoplay" loop muted src="images/1.mp4" type="video/mp4" >
+    </video>
+    <!-- Text at center of ground -->
+    <h1>I Love You From Devendra</h1>
+  </div>
+  <div id="ground"></div>
+</div>
+<div id="music-container"></div>
+<!-- github corner (https://github.com/tholman/github-corners) -->
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<!-- partial -->
+  <script  src="./script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  
+  
+<script>// Your existing JavaScript code here
+
+  // Initialize a variable to keep track of the currently opened image modal
+  var currentModal = null;
+  var backgroundMusic = document.querySelector('audio'); // Get the background audio element
+  
+  // Add an event listener to all image elements
+  var aImg = document.querySelectorAll('#spin-container img');
+  aImg.forEach(function (img) {
+      img.addEventListener('click', function () {
+          // Check if there's a currently opened modal, and close it if so
+          if (currentModal) {
+              currentModal.remove();
+          }
+  
+          // Create a popup modal
+          var modal = document.createElement('div');
+          modal.classList.add('modal');
+  
+          // Create an image element in the modal
+          var modalImg = document.createElement('img');
+          modalImg.src = this.src;
+  
+          // Append the image to the modal
+          modal.appendChild(modalImg);
+  
+          // Append the modal to the body
+          document.body.appendChild(modal);
+  
+          // Set the currently opened modal to the new modal
+          currentModal = modal;
+  
+          // Close the modal when clicked outside of the image
+          modal.addEventListener('click', function () {
+              modal.remove();
+              currentModal = null; // Reset the currently opened modal
+          });
+      });
+  });
+  
+  // Function to open video popups
+  function openVideoPopup(videoSrc) {
+      // Create a modal for the video
+      var modal = document.createElement('div');
+      modal.classList.add('modal');
+  
+      // Create a video element in the modal
+      var modalVideo = document.createElement('video');
+      modalVideo.controls = true;
+      modalVideo.autoplay = true;
+      modalVideo.muted = true;
+  
+      // Create a source element for the video
+      var source = document.createElement('source');
+      source.src = videoSrc;
+      source.type = 'video/mp4';
+  
+      // Append the source element to the video element
+      modalVideo.appendChild(source);
+  
+      // Append the video element to the modal
+      modal.appendChild(modalVideo);
+  
+      // Append the modal to the body
+      document.body.appendChild(modal);
+  
+      // Pause background music when the video is played
+      modalVideo.addEventListener('play', function () {
+          backgroundMusic.pause();
+      });
+  
+      // Play background music when the video is paused or ended
+      modalVideo.addEventListener('pause', function () {
+          backgroundMusic.play();
+      });
+  
+      modalVideo.addEventListener('ended', function () {
+          backgroundMusic.play();
+      });
+  
+      // Close the modal when clicked outside of the video
+      modal.addEventListener('click', function () {
+          modal.remove();
+      });
+  }
+  
+  // Add an event listener to all video links
+  var aVideo = document.querySelectorAll('#spin-container video');
+  aVideo.forEach(function (videoElement) {
+      videoElement.addEventListener('click', function () {
+          var videoSrc = this.getAttribute('src');
+          openVideoPopup(videoSrc);
+      });
+  });
+  </script>
+
+
+</body>

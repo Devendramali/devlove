@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Drag Papers ❤️</title>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Short+Stack&amp;family=Homemade+Apple&amp;display=swap'>
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- A pen by Developer Rahul  -->
+<div class="paper heart">
+  <a href="index3.html">Click</a>
+
+</div>
+
+  
+<div class="paper image" data-aos="fade-up" data-aos-duration="400"  data-aos-delay="300">
+  <p> and I fallen in</p>
+    <p>Love with You 😍 </p>
+   <img src="images/1.jpg" />
+</div>
+
+<!-- <div class="paper image">
+  <p</p>
+  <img src="images/1.jpg" />
+</div> -->
+
+<div class="paper image" data-aos="fade-right" data-aos-duration="600"  data-aos-delay="700">
+  <p>How can be </p>
+   <p> someone so cute ❤️ </p>
+
+  <img src="images/3.jpg" />
+</div>
+
+
+
+<div class="paper red" data-aos="fade-left" data-aos-duration="1200"  data-aos-delay="800">
+<p class="p1"> and My Favorite</p>
+<p class="p2">Person 😍</p>
+<img src="images/4.jpg" />
+</div>
+
+<div class="paper" data-aos="fade-down" data-aos-duration="1700"  data-aos-delay="900">
+<p class="p1">You are Cute </p>
+  <p class="p1">Amazing <span style="color: red !important;">❤️</span></p>
+
+  <img src="images/5.jpg" />
+</div>
+
+<div class="paper" data-aos="fade-up" data-aos-duration="2000"  data-aos-delay="1000">
+<p class="p1">Drag the papers to move!</p>
+</div>
+<div id="music-container"></div>
+
+<!-- partial -->
+  <script  src="./script1.js"></script>
+  <script>
+    // Link of background music - set 'null' if you dont want to play background music
+var bgMusicURLs = 'images/2.mp3';
+var bgMusicControls = true;
+if (bgMusicURLs) {
+  document.getElementById('music-container').innerHTML += `
+<audio src="${bgMusicURLs}" ${bgMusicControls? 'controls': ''} autoplay loop type="audio/mpeg">
+<p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+`;
+}
+  </script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
